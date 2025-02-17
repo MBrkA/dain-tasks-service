@@ -21,7 +21,7 @@ export const updateTaskListConfig: ToolConfig = {
     id: z.string(),
     title: z.string(),
     updated: z.string(),
-  }),
+  }).optional(),
   handler: async ({ tasklistId, title }, agentInfo, { app }) => {
     const tokens = getTokenStore().getToken(agentInfo.id);
 
@@ -39,13 +39,13 @@ export const updateTaskListConfig: ToolConfig = {
 
       return {
         text: "Authentication required",
-        data: null,
+        data: undefined,
         ui: oauthUI.build(),
       };
     }
 
     try {
-      const response = await axios.put(
+      const response = await axios.patch(
         `https://tasks.googleapis.com/tasks/v1/users/@me/lists/${tasklistId}`,
         { title },
         {
@@ -78,7 +78,7 @@ export const updateTaskListConfig: ToolConfig = {
 
       return {
         text: "Failed to update task list",
-        data: null,
+        data: undefined,
         ui: alertUI.build(),
       };
     }

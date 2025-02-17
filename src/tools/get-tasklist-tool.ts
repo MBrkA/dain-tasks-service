@@ -20,7 +20,7 @@ export const getTaskListConfig: ToolConfig = {
     id: z.string(),
     title: z.string(),
     updated: z.string(),
-  }),
+  }).optional(),
   handler: async ({ tasklistId }, agentInfo, { app }) => {
     const tokens = getTokenStore().getToken(agentInfo.id);
 
@@ -38,7 +38,7 @@ export const getTaskListConfig: ToolConfig = {
 
       return {
         text: "Authentication required",
-        data: null,
+        data: undefined,
         ui: oauthUI.build(),
       };
     }
@@ -75,7 +75,7 @@ export const getTaskListConfig: ToolConfig = {
 
       return {
         text: "Failed to fetch task list",
-        data: null,
+        data: undefined,
         ui: alertUI.build(),
       };
     }

@@ -17,7 +17,7 @@ export const deleteTaskConfig: ToolConfig = {
     tasklistId: z.string().describe("Task list identifier"),
     taskId: z.string().describe("Task identifier"),
   }),
-  output: z.object({}),
+  output: z.object({}).optional(),
   handler: async ({ tasklistId, taskId }, agentInfo, { app }) => {
     const tokens = getTokenStore().getToken(agentInfo.id);
 
@@ -35,7 +35,7 @@ export const deleteTaskConfig: ToolConfig = {
 
       return {
         text: "Authentication required",
-        data: {},
+        data: undefined,
         ui: oauthUI.build(),
       };
     }
@@ -68,7 +68,7 @@ export const deleteTaskConfig: ToolConfig = {
 
       return {
         text: "Failed to delete task",
-        data: {},
+        data: undefined,
         ui: alertUI.build(),
       };
     }

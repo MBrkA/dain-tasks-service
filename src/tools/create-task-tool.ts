@@ -27,7 +27,7 @@ export const createTaskConfig: ToolConfig = {
     updated: z.string(),
     status: z.string(),
     due: z.string().optional(),
-  }),
+  }).optional(),
   handler: async (input, agentInfo, { app }) => {
     const tokens = getTokenStore().getToken(agentInfo.id);
 
@@ -45,7 +45,7 @@ export const createTaskConfig: ToolConfig = {
 
       return {
         text: "Authentication required",
-        data: null,
+        data: undefined,
         ui: oauthUI.build(),
       };
     }
@@ -93,7 +93,7 @@ export const createTaskConfig: ToolConfig = {
 
       return {
         text: "Failed to create task",
-        data: null,
+        data: undefined,
         ui: alertUI.build(),
       };
     }

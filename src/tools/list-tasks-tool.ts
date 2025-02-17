@@ -49,7 +49,7 @@ export const listTasksConfig: ToolConfig = {
 
       return {
         text: "Authentication required",
-        data: { items: [] },
+        data: undefined,
         ui: oauthUI.build(),
       };
     }
@@ -97,7 +97,7 @@ export const listTasksConfig: ToolConfig = {
 
       return {
         text: "Failed to fetch tasks",
-        data: { items: [] },
+        data: undefined,
         ui: alertUI.build(),
       };
     }
