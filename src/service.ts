@@ -4,6 +4,11 @@ import { listTaskListsConfig } from "./tools/list-tasklists-tool";
 import { getTaskListConfig } from "./tools/get-tasklist-tool";
 import { createTaskListConfig } from "./tools/create-tasklist-tool";
 import { listTasksConfig } from "./tools/list-tasks-tool";
+import { deleteTaskListConfig } from "./tools/delete-tasklist-tool";
+import { updateTaskListConfig } from "./tools/update-tasklist-tool";
+import { createTaskConfig } from "./tools/create-task-tool";
+import { updateTaskConfig } from "./tools/update-task-tool";
+import { deleteTaskConfig } from "./tools/delete-task-tool";
 
 export const dainService = defineDAINService({
   metadata: {
@@ -21,7 +26,12 @@ export const dainService = defineDAINService({
     listTaskListsConfig,
     getTaskListConfig,
     createTaskListConfig,
-    listTasksConfig
+    listTasksConfig,
+    deleteTaskListConfig,
+    updateTaskListConfig,
+    createTaskConfig,
+    updateTaskConfig,
+    deleteTaskConfig
   ],
   oauth2: {
     baseUrl: process.env.TUNNEL_URL || "http://localhost:2022",
